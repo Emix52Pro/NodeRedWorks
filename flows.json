@@ -1,0 +1,486 @@
+[
+    {
+        "id": "0e62577716b42fba",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "a788bcaa3a130a16",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "4b591f44325162f7",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "67ce865f8606466f",
+        "type": "ui_group",
+        "name": "Default",
+        "tab": "a788bcaa3a130a16",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "c6048a1e912bf91f",
+        "type": "change",
+        "z": "0e62577716b42fba",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "X",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "X",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 520,
+        "y": 60,
+        "wires": [
+            [
+                "a7de2b4c8592fdaf",
+                "8986278b61848fc1"
+            ]
+        ]
+    },
+    {
+        "id": "4444208132769c04",
+        "type": "function",
+        "z": "0e62577716b42fba",
+        "name": "function 1",
+        "func": "// Generate a random number between 1 and 100\nmsg.payload = Math.floor(Math.random() * 100);\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 60,
+        "wires": [
+            [
+                "c6048a1e912bf91f"
+            ]
+        ]
+    },
+    {
+        "id": "4f20ac293a52e168",
+        "type": "inject",
+        "z": "0e62577716b42fba",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "0.5",
+        "topic": "X",
+        "payload": "",
+        "payloadType": "str",
+        "x": 110,
+        "y": 60,
+        "wires": [
+            [
+                "4444208132769c04"
+            ]
+        ]
+    },
+    {
+        "id": "a7de2b4c8592fdaf",
+        "type": "function",
+        "z": "0e62577716b42fba",
+        "name": "function 2",
+        "func": "// Generate a random number between 1 and 100\nmsg.payload = Math.floor(Math.random() * 100);\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 120,
+        "wires": [
+            [
+                "0a9d8b8c627aaf61"
+            ]
+        ]
+    },
+    {
+        "id": "f658bf9463439eac",
+        "type": "function",
+        "z": "0e62577716b42fba",
+        "name": "function 3",
+        "func": "// Generate a random number between 1 and 100\nmsg.payload = Math.floor(Math.random() * 100);\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 180,
+        "wires": [
+            [
+                "75b8736551c01118"
+            ]
+        ]
+    },
+    {
+        "id": "0a9d8b8c627aaf61",
+        "type": "change",
+        "z": "0e62577716b42fba",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "Y",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "Y",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 520,
+        "y": 120,
+        "wires": [
+            [
+                "f658bf9463439eac",
+                "8986278b61848fc1"
+            ]
+        ]
+    },
+    {
+        "id": "75b8736551c01118",
+        "type": "change",
+        "z": "0e62577716b42fba",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "Z",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "Z",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 520,
+        "y": 180,
+        "wires": [
+            [
+                "ea703e5b1389cbab",
+                "efab208b5f63b8b5",
+                "8986278b61848fc1"
+            ]
+        ]
+    },
+    {
+        "id": "314a0394b85a71d1",
+        "type": "ui_template",
+        "z": "0e62577716b42fba",
+        "group": "67ce865f8606466f",
+        "name": "",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "format": "<table style=\"width:100%\">\n    <tr>\n        <th>Variable</th>\n        <th>Valor</th>\n    </tr>\n    <tr>\n        <td style=\"text-align:center\">X</td>\n        <td style=\"text-align:center\">{{msg.payload.ACCELEROMETER.values[0] | number:3}}</td>\n    </tr>\n\n    <tr>\n        <td style=\"text-align:center\">Y</td>\n        <td style=\"text-align:center\">{{msg.payload.ACCELEROMETER.values[1] | number:3}}</td>\n    </tr>\n\n    <tr>\n        <td style=\"text-align:center\">Z</td>\n        <td style=\"text-align:center\">{{msg.payload.ACCELEROMETER.values[2] | number:3}}</td>\n    </tr>\n</table>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 340,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6d119b46f4993c2e",
+        "type": "debug",
+        "z": "0e62577716b42fba",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 880,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "ae8d878e4837608c",
+        "type": "debug",
+        "z": "0e62577716b42fba",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 880,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "ea703e5b1389cbab",
+        "type": "debug",
+        "z": "0e62577716b42fba",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 880,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "efab208b5f63b8b5",
+        "type": "ui_template",
+        "z": "0e62577716b42fba",
+        "group": "67ce865f8606466f",
+        "name": "",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "format": "<table style=\"width:100%\">\n    <tr>\n        <th>Variable</th>\n        <th>Valor</th>\n    </tr>\n    <tr>\n        <td style=\"text-align:center\">X</td>\n        <td style=\"text-align:center\">{{msg.X | number:3}}</td>\n    </tr>\n\n    <tr>\n        <td style=\"text-align:center\">Y</td>\n        <td style=\"text-align:center\">{{msg.Y | number:3}}</td>\n    </tr>\n\n    <tr>\n        <td style=\"text-align:center\">Z</td>\n        <td style=\"text-align:center\">{{msg.Z | number:3}}</td>\n    </tr>\n</table>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 840,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b2f3dbaf4124ac64",
+        "type": "ui_button",
+        "z": "0e62577716b42fba",
+        "name": "",
+        "group": "67ce865f8606466f",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "button",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "X",
+        "topicType": "msg",
+        "x": 90,
+        "y": 120,
+        "wires": [
+            [
+                "4444208132769c04"
+            ]
+        ]
+    },
+    {
+        "id": "8986278b61848fc1",
+        "type": "ui_chart",
+        "z": "0e62577716b42fba",
+        "name": "",
+        "group": "67ce865f8606466f",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "label": "chart",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 770,
+        "y": 40,
+        "wires": [
+            []
+        ]
+    }
+]
