@@ -1,0 +1,3 @@
+termux-sensor -l
+termux-sensor -s ""
+termux-sensor -s LINEARACCEL -n 1
